@@ -59,6 +59,7 @@ p{
 }
 #myChart{
     object-fit: contain;
+    cursor: pointer;
    
 }
 
