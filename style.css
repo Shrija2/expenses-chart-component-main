@@ -1,0 +1,70 @@
+body{
+    background-color:hsl(27, 66%, 92%) ;
+    margin:20% 5% 30% 5%;
+    font-family:DM Sans ;
+}
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+#heading{
+    background-color:hsl(10, 79%, 65%) ;
+    color: white;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    padding:5%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+h1{
+    margin:0px;
+    font-size:1.8rem;
+
+}
+
+.logo img{
+    float:right;
+}
+section{
+    background-color: white;
+    padding:5%;
+    border-radius: 10px;
+}
+section h1{
+    color:hsl(25, 47%, 15%);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    
+}
+hr{
+    border: solid 1px hsl(10, 79%, 65%,0.2);
+    margin-top:1rem;
+}
+.month-wise{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top:5%;
+    
+}
+.fromLastMonth{
+    text-align: right;
+}
+h2{
+    color:hsl(25, 47%, 15%);
+    margin:0px;
+    font-size: 1rem;
+}
+p{
+    margin-bottom: 2px;
+    margin-top: 2px;
+    color:hsl(28, 10%, 53%);
+}
+#myChart{
+    object-fit: contain;
+   
+}
+
+@media(min-width:600px){
+    main{
+        width:50%;
+        margin:auto;
+    }
+}

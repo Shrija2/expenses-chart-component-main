@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Expenses chart component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=EB+Garamond&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;700&family=Inter:wght@400;500;700&family=Outfit:wght@400;700&family=Poppins:ital,wght@0,700;1,400;1,800&family=Roboto:wght@100;400;500&family=Space+Grotesk:wght@500&family=Work+Sans:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+  <div id="heading">
+    <div>
+      My balance
+    <h1>$921.48</h1>
+    </div>
+    <div class="logo">
+      <img src="images/logo.svg">
+    </div>
+  </div>
+
+  <section>
+  <h1>Spending - Last 7 days</h1>
+  
+  <div>
+    <canvas id="myChart"></canvas>
+
+  </div>
+<hr>
+  <div class="month-wise">
+    <div>
+      <p>Total this month</p>
+      <h1>$478.33</h1>
+    </div>
+    <div class="fromLastMonth">
+      <h2>+2.4%</h2>
+    <p>from last month</p>
+    </div>   
+  </div>
+
+ 
+</section>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Shrija</a>.
+  </div>
+</main>
+
+  
+  <script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        let data = JSON.parse(xhttp.responseText);
+        let days = data.map(entry => entry.day);
+        let amounts = data.map(entry => entry.amount);
+
+        const maxIndex = amounts.indexOf(Math.max(...amounts));
+
+        const backgroundColors = amounts.map((amount, index) => {
+          if (index===maxIndex){
+            return 'hsl(186, 34%, 60%)';
+          }
+          else 
+          return 'hsl(10, 79%, 65%)';
+        });
+
+        const myChart = new Chart("myChart", {
+          type: "bar",
+          data: {
+            labels: days,
+            datasets: [{
+              data: amounts,
+              backgroundColor: backgroundColors ,
+              borderRadius:4,
+            }]
+          },
+          
+          options:{
+            plugins: {
+          legend: {
+              display: false
+          },
+      },
+            scales: {
+              x:{
+                grid:{
+                  display:false
+                }
+              },
+            y: {
+              display: false,
+                },
+            }
+          }
+        });
+      }
+      console.log(days);
+  };
+    xhttp.open("GET", "data.json", true);
+    xhttp.send();
+  </script>
+
+
+
+  </script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  
+</body>
+</html>
