@@ -64,16 +64,17 @@
         let days = data.map(entry => entry.day);
         let amounts = data.map(entry => entry.amount);
 
-        const maxIndex = amounts.indexOf(Math.max(...amounts));
+          const currentDay = new Date().getDay();
 
         const backgroundColors = amounts.map((amount, index) => {
-          if (index===maxIndex){
+          if (index===currentDay){
             return 'hsl(186, 34%, 60%)';
           }
           else 
           return 'hsl(10, 79%, 65%)';
         });
 
+        
         const myChart = new Chart("myChart", {
           type: "bar",
           data: {
@@ -81,7 +82,7 @@
             datasets: [{
               data: amounts,
               backgroundColor: backgroundColors ,
-              borderRadius:4,
+              borderRadius:5,
             }]
           },
           
